@@ -20,6 +20,7 @@
     <form action="{{ url_for('predict')}}"method="post">
     	<input type="text" name="Year" placeholder="Year Built" required="required" />
         <input type="text" name="CPI.Average" placeholder="Postal Code" required="required" />
+        <input type="text" name="CPI.Average" placeholder="Construction" required="required" />
 		<input type="text" name="Low.Value" placeholder="TIV" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
