@@ -25,9 +25,9 @@ dataset = pd.read_csv('Final.csv')
 #x_columns = dataset.drop(['Average','High.Value','High.2018','Low.2018'], axis = 1) 
 #X = x_columns
 
-X = dataset[['Year', 'CPI.Average', 'Low.Value']]
+X = dataset[['Year Built', 'Postal Code', 'TotalReplacementValue']]
 
-y = dataset['Average']
+y = dataset['AAL']
 
 #Splitting Training and Test Set
 #Since we have a very small dataset, we will train our model with all availabe data.
@@ -43,4 +43,4 @@ pickle.dump(regressor, open('model.pkl','wb'))
 
 # Loading model to compare the results
 model = pickle.load(open('model.pkl','rb'))
-print(model.predict([[1996, 157, 4.75]]))
+print(model.predict([[1996, 55406, 300000]]))
