@@ -10,7 +10,7 @@ Cat Model Prediction Flask App on Google Cloud Platform (GCP)
 - Google Cloud Platform: Cloud Run
 
 #### Website URL:
-https://housing-price-prediction-service-fohqva5nua-uc.a.run.app
+https://catapp-ubaj3zh4aa-uc.a.run.app/
 
 #### Features:
 1. Runs on Google Cloud Platform
