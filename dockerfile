@@ -1,22 +1,30 @@
-# Use the official lightweight Python image.
-# https://hub.docker.com/_/python
-FROM python:3.6-slim
+FROM python:3.8-slim-buster
 
-# Allow statements and log messages to immediately appear in the Knative logs
-ENV PYTHONUNBUFFERED True
+#RUN apt-get update -y && \
+#    apt-get install -y python-pip python3-dev
 
-# Copy local code to the container image.
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . ./
+COPY ./requirements.txt /CatModelApp/requirements.txt
 
-# Install production dependencies.
-RUN pip install Flask gunicorn
-RUN	pip3 install --upgrade pip
-RUN	pip3 install -r requirements.txt
+#COPY . /CatModelApp
 
-# Run the web service on container startup. Here we use the gunicorn
-# webserver, with one worker process and 8 threads.
-# For environments with multiple CPU cores, increase the number of workers
-# to be equal to the cores available.
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+# Working Directory
+WORKDIR /CatModelApp
+
+# Copy source code to working directory
+#COPY 'requirements.txt' .
+
+# Install packages from requirements.txt
+# hadolint ignore=DL3013
+#RUN pip install --upgrade pip &&\
+#    pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install -r requirements.txt
+
+COPY . /CatModelApp
+
+#COPY . .
+
+#CMD ["model.py"]
+
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ]
