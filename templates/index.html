@@ -18,9 +18,12 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Year Built" placeholder="Year Built" required="required" />
-        <input type="text" name="Postal Code" placeholder="Postal Code" required="required" />
-        <input type="text" name="TotalReplacementValue" placeholder="TIV" required="required" />
+    	<input type="text" name="YearBuilt" placeholder="Year Built" required="required" />
+        <input type="text" name="PostalCode" placeholder="Postal Code" required="required" />
+    	<input type="text" name="Stories" placeholder="Stories(1 or 2)" required="required" />
+        <input type="text" name="AIRConstruction" placeholder="Construction" required="required" />
+        <input type="text" name="SqFt" placeholder="SqFt" required="required" />
+        <input type="text" name="TotalReplacementValue" placeholder="TotalReplacementValue" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict AAL</button>
     </form>
