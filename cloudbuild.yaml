@@ -1,22 +1,21 @@
-steps:
- # Build the container image
+ steps:
+ # build the container image
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['build', '-t', 'gcr.io/central-droplet-295015/app:$COMMIT_SHA', '.']
- # Push the container image to Container Registry
+   args: ['build', '-t', 'gcr.io/$PROJECT_ID/cat-model-prediction-app:$COMMIT_SHA', '.']
+ # push the container image to Container Registry
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['push', 'gcr.io/central-droplet-295015/app:$COMMIT_SHA']
+   args: ['push', 'gcr.io/$PROJECT_ID/cat-model-prediction-app:$COMMIT_SHA']
  # Deploy container image to Cloud Run
- - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-   entrypoint: gcloud
+ - name: 'gcr.io/cloud-builders/gcloud'
    args:
    - 'run'
    - 'deploy'
-   - 'app'
+   - 'housing-price-prediction-service'
    - '--image'
-   - 'gcr.io/central-droplet-295015/app:$COMMIT_SHA'
+   - 'gcr.io/$PROJECT_ID/cat-model-prediction-app:$COMMIT_SHA'
    - '--region'
    - 'us-central1'
    - '--platform'
    - 'managed'
-images:
-- 'gcr.io/central-droplet-295015/app:$COMMIT_SHA'
+ images:
+ - 'gcr.io/$PROJECT_ID/cat-model-prediction-app:$COMMIT_SHA'
