@@ -3,7 +3,7 @@ Cat Model Prediction Flask App on Google Cloud Platform (GCP)
 
 
 #### Project Architecture:
-![Architecture](https://github.com/anushirahatti/housing-price-prediction-app/blob/master/Cloud_Run_Architecture.png)
+![Architecture](Cloud_Run_Architecture.png)
 
 #### About the App:
 - Flask App: Cat Model Prediction
